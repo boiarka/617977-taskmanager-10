@@ -1,3 +1,5 @@
+'use strict';
+
 const TASK_COUNT = 3;
 
 const createSiteMenuTemplate = () => {
@@ -479,8 +481,6 @@ const tasksElement = siteMainElement.querySelector(`.board__tasks`);
 
 new Array(TASK_COUNT)
   .fill(``)
-  .forEach(
-    () => render(tasksElement, createCardTemplate(), `beforeend`)
-  );
+  .forEach(() => render(tasksElement, createCardTemplate(), `beforeend`));
 
 render(boardElement, createLoadMoreTemplate(), `beforeend`);
