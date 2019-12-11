@@ -1,6 +1,9 @@
-export const createEditTemplate = () => (
-  `<div class="board__tasks">
-	<article class="card card--edit card--yellow card--repeat">
+import {
+  createElement
+} from "../utils.js";
+
+const createEditTemplate = () => (
+  `<article class="card card--edit card--yellow card--repeat">
 		<form class="card__form" method="get">
 			<div class="card__inner">
 				<div class="card__color-bar">
@@ -126,6 +129,28 @@ export const createEditTemplate = () => (
 				</div>
 			</div>
 		</form>
-	</article>
-</div>`
+	</article>`
 );
+
+
+export default class TaskEdit {
+  constructor() {
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createEditTemplate();
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

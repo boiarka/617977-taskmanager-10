@@ -2,17 +2,17 @@ import {
   createElement
 } from "../utils.js";
 
-const createLoadMoreTemplate = () => (
-  `<button class="load-more" type="button">load more</button>`
+const createBoardTasksTemplate = () => (
+  `<div class="board__tasks"></div>`
 );
 
-export default class LoadMore {
+export default class BoardTasks {
   constructor() {
     this._element = null;
   }
 
   getTemplate() {
-    return createLoadMoreTemplate();
+    return createBoardTasksTemplate();
   }
 
   getElement() {
