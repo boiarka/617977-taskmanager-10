@@ -2,11 +2,7 @@ import AbstractComponent from './abstract-component.js';
 
 const createEditTemplate = (task) => {
   const {
-    description,
-    tags,
-    dueDate,
-    color,
-    repeatingDays
+    description
   } = task;
 
   return (
@@ -71,7 +67,7 @@ const createEditTemplate = (task) => {
 									<input type="hidden" name="hashtag" value="repeat"
 										class="card__hashtag-hidden-input" />
 									<p class="card__hashtag-name">
-										#repeat
+									test
 									</p>
 									<button type="button" class="card__hashtag-delete">
 										delete
