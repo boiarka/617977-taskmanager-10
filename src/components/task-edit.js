@@ -1,9 +1,12 @@
-import {
-  createElement
-} from "../utils.js";
+import AbstractComponent from './abstract-component.js';
 
-const createEditTemplate = () => (
-  `<article class="card card--edit card--yellow card--repeat">
+const createEditTemplate = (task) => {
+  const {
+    description
+  } = task;
+
+  return (
+    `<article class="card card--edit card--yellow card--repeat">
 		<form class="card__form" method="get">
 			<div class="card__inner">
 				<div class="card__color-bar">
@@ -14,7 +17,7 @@ const createEditTemplate = () => (
 				<div class="card__textarea-wrap">
 					<label>
 						<textarea class="card__text" placeholder="Start typing your text here..."
-							name="text">Here is a card with filled data</textarea>
+							name="text">${description}</textarea>
 					</label>
 				</div>
 				<div class="card__settings">
@@ -64,7 +67,7 @@ const createEditTemplate = () => (
 									<input type="hidden" name="hashtag" value="repeat"
 										class="card__hashtag-hidden-input" />
 									<p class="card__hashtag-name">
-										#repeat
+									test
 									</p>
 									<button type="button" class="card__hashtag-delete">
 										delete
@@ -130,27 +133,22 @@ const createEditTemplate = () => (
 			</div>
 		</form>
 	</article>`
-);
+  );
+};
 
 
-export default class TaskEdit {
-  constructor() {
-    this._element = null;
+export default class TaskEdit extends AbstractComponent {
+  constructor(task) {
+    super();
+    this._task = task;
   }
 
   getTemplate() {
-    return createEditTemplate();
+    return createEditTemplate(this._task);
   }
 
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
+  setSubmitHandler(handler) {
+    this.getElement().querySelector(`form`)
+      .addEventListener(`submit`, handler);
   }
 }
