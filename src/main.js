@@ -3,6 +3,7 @@ import FilterComponent from './components/filter.js';
 import BoardComponent from './components/board.js';
 import BoardController from './controllers/board.js';
 
+
 import {
   render,
   RenderPosition
